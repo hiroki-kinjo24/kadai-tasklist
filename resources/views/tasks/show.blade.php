@@ -24,7 +24,7 @@
     </table>
     
     {{-- メッセージ編集ページへのリンク --}}
-    <a class="btn btn-outline" href="{{ route('tasks.edit', $task->id) }}">このメッセージを編集</a>
+    <a class="btn btn-outline" href="{{ route('tasks.edit', $task->id) }}">このタスクを編集</a>
     
     {{-- メッセージ削除フォーム --}}
     <form method="POST" action="{{ route('tasks.destroy', $task->id) }}" class="my-2">

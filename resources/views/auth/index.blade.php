@@ -18,7 +18,7 @@
             <tbody>
                 @foreach ($tasks as $task)
                 <tr>
-                    <td><a class="link link-hover text-info" href="{{ route('users.show', $task->id) }}">{{ $task->id }}</a></td>
+                    <td><a class="link link-hover text-info" href="{{ route('show', $task->id) }}">{{ $task->id }}</a></td>
                     <td>{{ $task->status }}</td>
                     <td>{{ $task->content }}</td>
                 </tr>
@@ -28,6 +28,6 @@
     @endif
     
     {{-- メッセージ作成ページへのリンク --}}
-    <a class="btn btn-primary" href="{{ route('tasks.create') }}">新規タスクの追加</a>
+    <a class="btn btn-primary" href="{{ route('task.create') }}">新規タスクの追加</a>
 
 @endsection

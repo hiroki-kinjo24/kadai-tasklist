@@ -1,24 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 
 use App\Models\Task;
+
+//追加
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class TasksController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    
+    //public function index(string $id)
+    
     public function index()
     {
         // メッセージ一覧を取得
         $tasks = Task::all();
+        
+        //$user = User::findOrFail($id);
 
         // メッセージ一覧ビューでそれを表示
         return view('tasks.index', [ 
-            'tasks' => $tasks,
+            //'user' => $user,
+            'tasks' => $tasks
         ]);
     }
 
@@ -85,9 +94,7 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
 
         // メッセージ編集ビューでそれを表示
-        return view('tasks.edit', [
-            'task' => $task,
-        ]);
+        return view('auth.edit', ['task' => $task,]);
     }
 
     /**

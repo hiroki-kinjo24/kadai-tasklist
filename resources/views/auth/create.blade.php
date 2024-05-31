@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="prose ml-4">
-        <h2 class="text-lg">タスク新規作成ページ</h2>
+        <h2 class="text-lg">ora新規作成ページ</h2>
     </div>
 
     <div class="flex justify-center">

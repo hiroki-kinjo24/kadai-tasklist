@@ -11,9 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('tasks');
     }
 
     /**
@@ -21,7 +19,5 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('tasks', function (Blueprint $table) {
-        });
     }
 };

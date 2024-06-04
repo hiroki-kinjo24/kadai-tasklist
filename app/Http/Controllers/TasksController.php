@@ -61,11 +61,12 @@ class TasksController extends Controller
         $task = new Task;
         $task->status = $request->status;
         $task->content = $request->content;
+        $task->user_id = Auth::user()->id;
         $task->save();
 
-        // トップページへリダイレクトさせる
-        //return redirect('task.index');
-        
+        //トップページへリダイレクトさせる
+        return redirect('/');
+        /*
         // メッセージ一覧を取得
         $tasks = Task::all();
          // メッセージ一覧ビューでそれを表示
@@ -73,6 +74,7 @@ class TasksController extends Controller
             //'user' => $user,
             'tasks' => $tasks
         ]);
+        */
     }
 
     /**
@@ -83,12 +85,18 @@ class TasksController extends Controller
     public function show($id)
     {
         // idの値でメッセージを検索して取得
-        $task = Task::findOrFail($id);
-
-        // メッセージ詳細ビューでそれを表示
-        return view('tasks.show', [
-            'task' => $task,
-        ]);
+            $task = Task::findOrFail($id);
+            
+        if ($task->user_id == Auth::user()->id){
+            // メッセージ詳細ビューでそれを表示
+            return view('tasks.show', [
+                'task' => $task,
+            ]);
+        }
+        
+        else {
+            return redirect('/');
+        }
     }
 
     /**

@@ -53,10 +53,14 @@ class User extends Authenticatable
     /* このユーザーが所有する投稿。（ Micropostモデルとの関係を定義） */
     
    
-   
     public function microposts()
     {
         return $this->hasMany(Micropost::class);
+    }
+    
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
     }
     
     /*

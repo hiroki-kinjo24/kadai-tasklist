@@ -15,12 +15,27 @@ class TasksController extends Controller
      * Display a listing of the resource.
      */
     
-    //public function index(string $id)
+    
     
     public function index()
     {
+        /*
+        if (\Auth::check()) { // 認証済みの場合
+            // 認証済みユーザーを取得
+            $user = \Auth::user();
+            
+            $tasks = $user->tasks();
+            
+            return view('tasks.index', [ 
+            'tasks' => $tasks
+            ]);
+        }
+        */
+        
+        
         // メッセージ一覧を取得
         $tasks = Task::all();
+        
         
         //$user = User::findOrFail($id);
 
@@ -29,6 +44,7 @@ class TasksController extends Controller
             //'user' => $user,
             'tasks' => $tasks
         ]);
+        
     }
 
     /**
@@ -65,8 +81,8 @@ class TasksController extends Controller
         $task->save();
 
         //トップページへリダイレクトさせる
-        return redirect('/');
-        /*
+        //return redirect('/');
+        
         // メッセージ一覧を取得
         $tasks = Task::all();
          // メッセージ一覧ビューでそれを表示
@@ -74,7 +90,7 @@ class TasksController extends Controller
             //'user' => $user,
             'tasks' => $tasks
         ]);
-        */
+        
     }
 
     /**

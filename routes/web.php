@@ -16,7 +16,7 @@ use App\Http\Controllers\TasksController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('dashboard');
 });
@@ -24,6 +24,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+*/
+
+Route::get('/', [TasksController::class, 'index']);
+
+Route::get('/dashboard', [TasksController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::resource('users', UsersController::class, ['only' => ['index', 'show']]);

@@ -1,6 +1,6 @@
 @if (Auth::check())
     {{-- タスク管理ページへのリンク --}}
-     <li><a class="link link-hover" href="{{ route('tasks.index') }}">Task</a></li>
+     <li><a class="link link-hover" href="{{ route('dashboard') }}">Task</a></li>
     {{-- ログアウトへのリンク --}}
      <li><a class="link link-hover" href="#" onclick="event.preventDefault();this.closest('form').submit();">Logout</a></li>
 @else

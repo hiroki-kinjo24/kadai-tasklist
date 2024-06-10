@@ -21,21 +21,23 @@ class TasksController extends Controller
     {
         
         if (\Auth::check()) { // 認証済みの場合
-            /*
+            
             // 認証済みユーザーを取得
             $user = \Auth::user();
-            
-            $tasks = $user->tasks();
-            */
+            //ユーザーの投稿の一覧を作成日時の降順で取得 
+            $tasks = $user->tasks()->orderBy('created_at', 'asc')->paginate(11);
             
             // メッセージ一覧を取得
-            $tasks = Task::all();
+            //$tasks = Task::all();
 
             // メッセージ一覧ビューでそれを表示
             return view('dashboard', [ 
-                'tasks' => $tasks
+                'tasks' => $tasks,
             ]);
             
+        }
+        else {
+            return view('dashboard');
         }
     }
 
